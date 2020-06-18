@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Query,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
 
 class PostDTO {
@@ -23,6 +32,27 @@ export class PostsController {
     return {
       success: true,
       data: data,
+    };
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: '帖子详情' })
+  detail(@Param('id') id: string) {
+    return { id: id };
+  }
+
+  @Put(':id')
+  @ApiOperation({ summary: '编辑帖子' })
+  update(@Param('id') id: string, @Body() body: PostDTO) {
+    return {
+      success: true,
+    };
+  }
+  @Delete(':id')
+  @ApiOperation({ summary: '删除帖子' })
+  deletePost(@Param('id') id: string) {
+    return {
+      success: true,
     };
   }
 }
