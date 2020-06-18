@@ -8,10 +8,9 @@ async function bootstrap() {
     .setTitle('nestjs blog api')
     .setDescription('a nest demo')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api-docs', app, document);
 
   await app.listen(3000);
 }
