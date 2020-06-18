@@ -9,6 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
+import { PostModel } from './post.module';
 
 class PostDTO {
   @ApiPropertyOptional({ description: '帖子标题' })
@@ -22,8 +23,8 @@ class PostDTO {
 export class PostsController {
   @Get()
   @ApiOperation({ summary: '显示博客列表' })
-  index() {
-    return [];
+  async index() {
+    return await PostModel.find();
   }
 
   @Post()
